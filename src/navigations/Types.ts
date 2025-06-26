@@ -5,6 +5,7 @@ export type RootStackParamList = {
   Journal: undefined;
   Timer: undefined;
   Stats: undefined;
+  Challenge: undefined;
 };
 
 // 👉 Type générique pour tous les écrans

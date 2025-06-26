@@ -9,6 +9,7 @@ type Props = {
   onPress: () => void;
   variant?: ButtonVariant;
   color?: string;
+  style? : ViewStyle;
 };
 
 export default function Button({
@@ -16,6 +17,7 @@ export default function Button({
   onPress,
   variant = 'default',
   color,
+  style,
 }: Props) {
   const buttonStyle: ViewStyle =
     variant === 'horizontal'
@@ -31,7 +33,7 @@ export default function Button({
   const textStyle = variant === 'horizontal' ? styles.horizontalText : styles.defaultText;
 
   return (
-    <TouchableOpacity style={buttonStyle} onPress={onPress}>
+    <TouchableOpacity style={[buttonStyle, style]} onPress={onPress}>
       <Text style={textStyle}>{title}</Text>
     </TouchableOpacity>
   );

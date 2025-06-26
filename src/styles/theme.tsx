@@ -3,6 +3,7 @@ const theme = {
         background: '#16262E',
         text: '#fff',
         primary: '#2E4756',
+        accent : '#7861d4',
     },
     spacing: {
         sm: 8,
@@ -20,6 +21,22 @@ const theme = {
         fontWeight: {
             regular: '400',
             bold: '700',
+        },
+    },
+    border: {
+        radius: {
+            sm: 4,
+            md: 8,
+            lg: 12,
+        },
+        width: {
+            sm: 1,
+            md: 2,
+            lg: 3,
+        },
+        color: {
+            light: '#ccc',
+            dark: '#333',
         },
     },
 };
