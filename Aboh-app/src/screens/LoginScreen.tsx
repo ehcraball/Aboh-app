@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScreenProps } from '../navigations/Types';
 import BaseScreen from '../components/BaseScreen';
 import theme from '../styles/theme';
 import { API_URL } from '../components/api';
+import Button from '../components/Button';
 
 
 export default function LoginScreen({ navigation }: ScreenProps<'Login'>) {
@@ -28,7 +29,6 @@ export default function LoginScreen({ navigation }: ScreenProps<'Login'>) {
             const data = await response.json();
             await AsyncStorage.setItem('token', data.access_token);
 
-            // 🔥 Nouvelle requête pour récupérer les infos utilisateur
             const userResponse = await fetch(`${API_URL}/users/me`, {
                 headers: { Authorization: `Bearer ${data.access_token}` },
             });
@@ -68,11 +68,11 @@ export default function LoginScreen({ navigation }: ScreenProps<'Login'>) {
                 />
                 {error ? <Text style={styles.error}>{error}</Text> : null}
                 <Button title="Se connecter" onPress={handleLogin} />
-                <Button
-                    title="Pas encore de compte ? Inscrivez-vous"
-                    onPress={() => navigation.navigate('Registration')}
-                    color={theme.colors.accent}
-                />
+                <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
+                    <Text style={{ color: theme.colors.accent, textAlign: 'center', marginTop: 16 }}>
+                        Pas encore de compte ? Inscrivez-vous
+                    </Text>
+                </TouchableOpacity>
             </View>
         </BaseScreen>
     );

@@ -15,14 +15,14 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ./Backend
     ports:
       - "8001:8001"
     command: uvicorn main:app --host 0.0.0.0 --port 8001
     volumes:
-      - ./backend:/app
+      - ./Backend:/app
     environment:
-    - DATABASE_URL=postgresql+asyncpg://yana_user:yana_pass@db:5432/yana_db
+      - DATABASE_URL=postgresql+asyncpg://yana_user:yana_pass@db:5432/yana_db
     depends_on:
       - db
     restart: always
